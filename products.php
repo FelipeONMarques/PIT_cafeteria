@@ -4,7 +4,16 @@ require 'Cart.php';
 require 'Product.php';
 
 session_start();
+//print_r($_SESSION);
 
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+
+        header('Location: login.php');
+    }
+    $logado = $_SESSION['email'];
 
 $products = [
     1=> ['id' => 1, 'name' => 'Café Irlandes', 'price' => 7.00, 'quantity' => 1],
@@ -56,7 +65,6 @@ if (isset($_GET['id'])){
                 <ul class="links">
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="products.php">Produtos</a></li>
-                    <li><a href="contacts.php">Contatos</a></li>
                     <li><a href="sobre.php">Sobre</a></li>
                     <li><a href="user.php">Conta</a></li>
                 </ul>
@@ -69,11 +77,9 @@ if (isset($_GET['id'])){
                         <p><a href="mycart.php"><i class="fa fa-shopping-cart"></i></a></p>
                     </div>
 
-                    <!--
-
-                        CARRINHO BRANCO NO FACUL INDEX.PHP
-
-                    -->
+                    <div><a href="Exit.php" style="background-color: #978B7B; 
+                    color: #fff; padding: 5px; border-radius: 999px">Sair</a></div>
+                    
                 </div>
             </div>      
     </div>
@@ -183,7 +189,7 @@ if (isset($_GET['id'])){
                         <ul>
                             <li><a href="?id=10" class="product-name">
                             <img src="images/1bolo-choc.png" alt="">    
-                            Bolo de chocoçate</a></li>
+                            Bolo de chocolate</a></li>
                             <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
                             <p class="product-price">4,00 <span>R$</span></p>
                         </ul>
@@ -218,8 +224,8 @@ if (isset($_GET['id'])){
                 <p>Baixe o nosso aplicativo</p>
                 <p>Baixe o nosso aplicativo para android e IOS</p>
                 <div>
-                    <img src="/images/app-store.png" alt="">
-                    <img src="/images/play-store.png" alt="">
+                    <img src="images/app-store.png" alt="">
+                    <img src="images/play-store.png" alt="">
                 </div>
             </div>
 

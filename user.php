@@ -16,7 +16,7 @@
         //print_r('<br>');
         //print_r($_POST['endereco']);
 
-        include_once('config.php');
+        include_once('Config.php');
 
         $nome = $_POST['nome'];
         $senha = $_POST['senha'];
@@ -28,8 +28,10 @@
         $estado = $_POST['estado'];
         $endereco = $_POST['endereco'];
 
-        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,telefone,sexo,data_nasc,cidade,estado,endereco) 
+        $result = mysqli_query($conexao, "INSERT INTO formulario_cliente(nome,senha,email,telefone,genero,data_nasc,cidade,estado,endereco) 
         VALUES('$nome','$senha','$email','$telefone','$genero','$data_nasc','$cidade','$estado','$endereco')");
+
+        header('Location: login.php');
     }
 
 ?>
@@ -52,7 +54,6 @@
                 <ul class="links">
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="products.php">Produtos</a></li>
-                    <li><a href="contacts.php">Contatos</a></li>
                     <li><a href="sobre.php">Sobre</a></li>
                     <li><a href="user.php">Conta</a></li>
                 </ul>
@@ -148,8 +149,8 @@
             <p>Baixe o nosso aplicativo</p>
             <p>Baixe o nosso aplicativo para android e IOS</p>
             <div>
-                <img src="/images/app-store.png" alt="">
-                <img src="/images/play-store.png" alt="">
+                <img src="images/app-store.png" alt="">
+                <img src="images/play-store.png" alt="">
             </div>
         </div>
 
